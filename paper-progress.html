@@ -109,18 +109,18 @@ Custom property                                  | Description                  
 
       #progressContainer,
       /* the stripe for the indeterminate animation*/
-      .indeterminate::after {
+      .indeterminate.indeterminateAfter {
         height: var(--paper-progress-height, 4px);
       }
 
       #primaryProgress,
       #secondaryProgress,
-      .indeterminate::after {
+      .indeterminate.indeterminateAfter {
         @apply --layout-fit;
       }
 
       #progressContainer,
-      .indeterminate::after {
+      .indeterminate.indeterminateAfter {
         background: var(--paper-progress-container-color, var(--google-grey-300));
       }
 
@@ -175,7 +175,7 @@ Custom property                                  | Description                  
         animation: indeterminate-bar var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
       }
 
-      :host(:not([disabled])) #primaryProgress.indeterminate::after {
+      :host(:not([disabled])) #primaryProgress.indeterminate.indeterminateAfter {
         content: "";
         -webkit-transform-origin: center center;
         transform-origin: center center;
@@ -251,7 +251,9 @@ Custom property                                  | Description                  
 
     <div id="progressContainer">
       <div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div>
-      <div id="primaryProgress"></div>
+      <div id="primaryProgress">
+        <div class="indeterminateAfter"></div>
+      </div>
     </div>
   </template>
 </dom-module>
